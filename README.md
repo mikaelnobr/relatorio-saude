@@ -11,9 +11,9 @@ license: mit
 
 # 📊 MiFitness Health Report
 
-> **Analise seus dados de saúde exportados do Xiaomi MiFitness com gráficos interativos e relatórios detalhados.**
+> **O seu painel pessoal de saúde! Analise os dados exportados do seu smartwatch Xiaomi (MiFitness) através de gráficos interativos e relatórios detalhados.**
 
-Uma aplicação web construída com Streamlit que processa os dados exportados do app Xiaomi MiFitness (Mi Fitness / Zepp Life) e gera um dashboard visual completo + relatório em Markdown para análise por IA.
+Uma aplicação web completa construída com Streamlit que extrai, processa e visualiza os dados do app Xiaomi MiFitness (Mi Fitness / Zepp Life). Tenha uma visão detalhada do seu condicionamento físico, qualidade do sono, treinos e saúde cardiovascular.
 
 ![Python](https://img.shields.io/badge/Python-3.9+-blue?logo=python)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.30+-FF4B4B?logo=streamlit)
@@ -23,17 +23,17 @@ Uma aplicação web construída com Streamlit que processa os dados exportados d
 
 ## ✨ Funcionalidades
 
-- 📱 **Upload do ZIP** exportado do MiFitness com suporte a senha (criptografia AES)
-- 📅 **Seleção de período** — analise o período completo ou um intervalo personalizado
-- 📊 **Dashboard interativo** com gráficos Plotly:
-  - 🚶 Passos diários e distância
-  - 😴 Qualidade do sono (score, fases, duração)
-  - ❤️ Frequência cardíaca (repouso, zonas, SpO2)
-  - 🔥 Calorias e atividade intensa
-  - 💪 Treinos detalhados (musculação, caminhada, etc.)
-  - 📈 Tendências e padrões semanais
-- 📄 **Relatório Markdown** completo para download e análise por IA (ChatGPT, Gemini, Claude)
-- 🔒 **Privacidade** — seus dados são processados localmente, nada é armazenado no servidor
+- 📱 **Upload Seguro** — envie diretamente o arquivo ZIP exportado pelo MiFitness com suporte à senha original (descriptografia AES embutida)
+- 📅 **Filtros Dinâmicos** — analise todo o seu histórico ou selecione um intervalo de datas personalizado
+- 📊 **Dashboard Interativo** com gráficos Plotly abrangendo:
+  - 🚶 Passos diários, atingimento de metas e distância percorrida
+  - 😴 Qualidade do sono detalhada (score diário, fases leve/profundo/REM, duração)
+  - ❤️ Frequência cardíaca (FC de repouso, zonas de treino, SpO2 e registros de estresse)
+  - 🔥 Queima calórica e minutos de atividade intensa (PAI)
+  - 💪 Resumo e histórico detalhado dos seus treinos físicos
+  - 📈 Análise de padrões (ex: qual dia da semana você é mais ativo)
+- 📑 **Exportação de Relatórios** — baixe um resumo completo em formato **PDF** estilizado ou **Markdown** para compartilhar com seu médico, personal trainer ou mesmo para enviar para uma IA (ChatGPT/Gemini)
+- 🔒 **Privacidade Total** — o processamento acontece apenas na memória, nada é salvo permanentemente em nenhum banco de dados
 
 ---
 
@@ -41,126 +41,117 @@ Uma aplicação web construída com Streamlit que processa os dados exportados d
 
 ### Passo 1: Exportar seus dados da Xiaomi
 
-1. Acesse **[account.xiaomi.com](https://account.xiaomi.com)** e faça login com sua conta Xiaomi
-2. Vá em **Privacidade** (Privacy)
-3. Solicite a **exportação dos seus dados** (Data Export / Exportar Dados)
-4. Aguarde o e-mail da Xiaomi com:
-   - 📎 **Link para download** do arquivo ZIP com seus dados
-   - 🔑 **Senha** para desbloquear o arquivo ZIP
-5. Baixe o arquivo ZIP do link recebido
+1. Acesse **[account.xiaomi.com](https://account.xiaomi.com)** e faça login com sua conta Xiaomi.
+2. Vá na aba **Privacidade** (Privacy).
+3. Solicite a **exportação dos seus dados** (Data Export / Exportar Dados).
+4. Aguarde os e-mails da Xiaomi. Você receberá dois e-mails separados:
+   - 📎 Um com o **Link para download** do arquivo ZIP
+   - 🔑 Outro contendo a **Senha** numérica para desbloquear o arquivo
+5. Baixe o arquivo ZIP para o seu computador ou celular.
 
-> ⚠️ **Importante:** O processo pode levar alguns minutos até horas. A Xiaomi envia dois e-mails separados: um com o link de download e outro com a senha.
+### Passo 2: Acessar a aplicação
 
-### Passo 2: Usar a aplicação
+#### Opção A: Online (Hugging Face Spaces) - *Recomendado*
 
-#### Opção A: Online (Hugging Face Spaces)
+Acesse diretamente pelo navegador, de qualquer dispositivo, sem precisar instalar nada:
 
-Acesse diretamente pelo navegador sem instalar nada:
-
-🔗 **[Abrir no Hugging Face Spaces](#)** *(link do seu deploy)*
+🔗 **[Abrir MiFitness Health Report](https://mikaelnobr-relatorio-saude.hf.space)**
 
 #### Opção B: Rodar localmente
 
 ```bash
-# Clonar o repositório
+# Clone o repositório
 git clone https://github.com/mikaelnobr/relatorio-saude.git
 cd relatorio-saude
 
-# Instalar dependências
+# Instale as dependências
 pip install -r requirements.txt
 
-# Executar a aplicação
+# Execute a aplicação Streamlit
 streamlit run app.py
 ```
 
-### Passo 3: Gerar o relatório
+### Passo 3: Gerar seu painel
 
-1. **Envie o arquivo ZIP** na barra lateral
-2. **Digite a senha** recebida por e-mail
-3. **Escolha o período** (completo ou personalizado)
-4. **Explore o dashboard** com os gráficos interativos
-5. Vá na aba **📄 Relatório** para gerar e baixar o Markdown
-6. **Envie o Markdown para uma IA** (ChatGPT, Gemini, Claude) para obter análises e recomendações personalizadas!
+1. Na barra lateral da aplicação, faça o **upload do arquivo ZIP**.
+2. Digite a **senha** que você recebeu por e-mail.
+3. Aguarde o processamento automático dos seus arquivos (gera o dashboard na hora).
+4. Navegue pelas diferentes abas (Resumo, Passos, Sono, Treinos, etc).
+5. Se desejar, acesse a aba **Relatório** e faça o download em **PDF** para manter salvo!
 
 ---
 
 ## 📁 Estrutura do Projeto
 
 ```
-├── app.py                      # Aplicação Streamlit principal
-├── requirements.txt            # Dependências Python
+├── app.py                      # Aplicação principal (Dashboard Streamlit)
+├── requirements.txt            # Dependências Python (pandas, plotly, streamlit, etc)
+├── Dockerfile                  # Container para deploy padrão via Docker
+├── .replit                     # Configurações para hospedar no ambiente Replit
 ├── .streamlit/
-│   └── config.toml             # Tema e configurações do Streamlit
+│   └── config.toml             # Configuração de tema escuro e layout
 ├── src/
-│   ├── __init__.py
-│   ├── helpers.py              # Funções utilitárias (timestamps, formatação)
-│   ├── zip_handler.py          # Extração de ZIP com senha (AES)
-│   ├── csv_loader.py           # Carregamento e detecção dos CSVs
-│   ├── report_builder.py       # Geração do relatório Markdown
-│   ├── visualizations.py       # Gráficos Plotly interativos
-│   └── processors/
-│       ├── __init__.py
-│       ├── profile.py          # Perfil do usuário
-│       ├── devices.py          # Dispositivos conectados
-│       ├── aggregated.py       # Dados agregados (passos, sono, FC, etc.)
-│       ├── workouts.py         # Treinos e exercícios
-│       └── trends.py           # Análise de tendências
-├── gerar_relatorio.py          # Script original (standalone)
+│   ├── helpers.py              # Utilitários (formatação de datas, números)
+│   ├── zip_handler.py          # Lida com a criptografia e extração do ZIP
+│   ├── csv_loader.py           # Varredura autônoma dos arquivos CSVs certos
+│   ├── report_builder.py       # Gerador do relatório bruto em Markdown
+│   ├── pdf_generator.py        # Gerador do relatório formatado em PDF (usando fpdf2)
+│   ├── visualizations.py       # Códigos dos gráficos interativos Plotly
+│   └── processors/             # Módulos segmentados de processamento
+│       ├── profile.py          # Perfil fisiológico do usuário
+│       ├── devices.py          # Dispositivos linkados (Mi Band, Watch, etc)
+│       ├── aggregated.py       # Dados macro (passos, HR diária, etc)
+│       ├── workouts.py         # Histórico de treinos
+│       └── trends.py           # Tendências semanais e evolução no período
 └── README.md
 ```
 
 ---
 
-## 🏗️ Deploy no Hugging Face Spaces
+## 🏗️ Deploy do seu próprio servidor
 
-1. Crie um novo **Space** em [huggingface.co/new-space](https://huggingface.co/new-space)
-2. Selecione **Streamlit** como SDK
-3. Faça upload ou conecte este repositório GitHub
-4. O app será buildado automaticamente usando o `requirements.txt`
+Se quiser ter a sua própria cópia rodando na nuvem:
+
+**Hugging Face Spaces:**
+Basta criar um novo *Space*, selecionar **Docker** como ambiente e linkar este seu repositório do GitHub. O `Dockerfile` nativo da aplicação tomará conta do resto (porta 7860).
+
+**Replit:**
+Crie um novo *Repl*, importe o link do seu GitHub e clique em "Run". O arquivo `.replit` subirá na porta 5000.
 
 ---
 
-## 📊 Dados Suportados
+## 📊 Arquivos CSV Monitorados
 
-O app processa os seguintes CSVs exportados pelo MiFitness:
+O sistema varre os arquivos dinâmicos contidos no ZIP procurando os seguintes padrões:
 
-| Arquivo | Dados |
+| Arquivo Fonte | Dados Extraídos |
 |---------|-------|
-| `hlth_center_aggregated_fitness_data.csv` | Passos, sono, FC, calorias, intensidade, estresse, SpO2 |
-| `hlth_center_sport_record.csv` | Treinos e exercícios detalhados |
-| `hlth_center_data_source.csv` | Dispositivos conectados |
-| `user_fitness_profile.csv` | Metas e perfil fitness |
-| `user_member_profile.csv` | Dados pessoais (sexo, idade, peso, altura) |
-
----
-
-## 🔒 Privacidade
-
-- ✅ Todos os dados são processados **localmente** no seu navegador/servidor
-- ✅ **Nenhum dado é armazenado** permanentemente
-- ✅ Os arquivos temporários são apagados após o processamento
-- ✅ O código é **open source** — você pode verificar exatamente o que acontece com seus dados
+| `..._hlth_center_aggregated_fitness_data.csv` | Passos, métricas de sono, FC contínua, kcal, etc. |
+| `..._hlth_center_sport_record.csv` | Treinos e atividades esportivas finalizadas. |
+| `..._hlth_center_data_source.csv` | Hardwares e wearables identificados. |
+| `..._user_fitness_profile.csv` | Metas estipuladas no app da Xiaomi. |
+| `..._user_member_profile.csv` | Físico do usuário (sexo, idade, IMC, peso). |
 
 ---
 
 ## 🤝 Contribuindo
 
-Contribuições são bem-vindas! Abra uma issue ou envie um pull request.
+Ideias ou melhorias? Fique à vontade para mandar um pull request!
 
-1. Faça um fork do projeto
-2. Crie uma branch (`git checkout -b feature/nova-funcionalidade`)
-3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
-4. Push para a branch (`git push origin feature/nova-funcionalidade`)
-5. Abra um Pull Request
+1. Fork o projeto
+2. Crie uma branch para sua adaptação (`git checkout -b feature/minha-ideia`)
+3. Commit suas mudanças (`git commit -m 'feat: minha nova feature incrível'`)
+4. Faça o Push (`git push origin feature/minha-ideia`)
+5. Abra e submeta um Pull Request
 
 ---
 
 ## 📝 Licença
 
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+Este projeto está sob a licença MIT. Refira-se ao arquivo `LICENSE` no repositório.
 
 ---
 
 <p align="center">
-  Feito com ❤️ usando <a href="https://streamlit.io">Streamlit</a> e <a href="https://plotly.com">Plotly</a>
+  Feito com ❤️ por <a href="https://github.com/mikaelnobr">mikaelnobr</a>
 </p>
