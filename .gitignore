@@ -1,0 +1,32 @@
+# Dados pessoais - NÃO versionar
+dados/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Relatórios gerados (contém dados pessoais)
+relatorio_saude.md
+relatorio_saude.pdf
+
+# Script original (substituído pelo app modular)
+gerar_relatorio.py
+
+# Temp
+*.tmp
